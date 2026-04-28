@@ -4,6 +4,7 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, Optional, Tuple
@@ -363,7 +364,7 @@ def main() -> None:
         default=Path("Submissions"),
         help="Root directory that contains submission folders (default: Submissions).",
     )
-    parser.add_argument("--python", type=str, default="python", help="Python executable to run student main.py")
+    parser.add_argument("--python", type=str, default=sys.executable, help="Python executable to run student main.py")
     parser.add_argument(
         "--main-path",
         type=Path,
