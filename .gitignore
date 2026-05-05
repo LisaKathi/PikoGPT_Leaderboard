@@ -8,3 +8,24 @@ leaderboard/benchmarks_hidden
 # Hidden model baseline
 Submissions/PikoGPT_Baseline_GH_hiddien
 Results/PikoGPT_Baseline_GH_hiddien
+
+# Submissions - generated/cache files
+Submissions/**/__pycache__/
+Submissions/**/*.pyc
+Submissions/**/*.pyo
+Submissions/**/.pytest_cache/
+Submissions/**/*.egg-info/
+Submissions/**/__init__.py
+Submissions/**/uv.lock
+
+# Submission checkpoints (large model weights)
+Submissions/**/*.pt
+Submissions/**/*.pth
+Submissions/**/*.ckpt
+Submissions/**/*.safetensors
+
+# Benchmark results (generated output)
+Results/
+
+# leaderboard cache
+leaderboard/__pycache__/

@@ -1,0 +1,65 @@
+from __future__ import annotations
+
+import sys
+import warnings
+
+import torch
+from transformers import GPT2TokenizerFast
+
+from src.config.settings import InferenceConfig, ModelConfig
+from src.model.gpt import GPT
+from src.utils.device import get_device
+
+
+class InferenceRunner:
+    def __init__(self, config: InferenceConfig) -> None:
+        self.config = config
+
+    def run(self) -> str:
+        cfg = self.config
+        if cfg.checkpoint is None:
+            raise ValueError("--checkpoint is required for inference")
+
+        torch.manual_seed(cfg.seed)
+        device = get_device(cfg.device)
+        ckpt = torch.load(cfg.checkpoint, map_location=device)
+        model_cfg = ModelConfig(**ckpt["model_config"])
+        model = GPT(model_cfg).to(device)
+        model.load_state_dict(ckpt["model_state_dict"])
+        model.eval()
+
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", FutureWarning)
+            tokenizer = GPT2TokenizerFast.from_pretrained("gpt2", local_files_only=True)
+
+        input_ids = torch.tensor([tokenizer.encode(cfg.prompt)], dtype=torch.long, device=device)
+        eos_token_id = 50256
+
+        if cfg.temperature == 0.0:
+            with torch.no_grad():
+                for _ in range(cfg.max_tokens):
+                    idx_cond = input_ids[:, -model_cfg.context_len:]
+                    logits, _ = model(idx_cond)
+                    next_token = logits[:, -1, :].argmax(dim=-1, keepdim=True)
+                    input_ids = torch.cat((input_ids, next_token), dim=1)
+                    if next_token.item() == eos_token_id:
+                        break
+        else:
+            input_ids = model.generate(
+                input_ids,
+                max_new_tokens=cfg.max_tokens,
+                temperature=cfg.temperature,
+            )
+
+        prompt_len = len(tokenizer.encode(cfg.prompt))
+        generated_ids = input_ids[0][prompt_len:].tolist()
+        output_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+
+        if cfg.leaderboard:
+            enc = sys.stdout.encoding or "utf-8"
+            safe = output_text.encode(enc, errors="replace").decode(enc)
+            sys.stdout.write(safe)
+            sys.stdout.flush()
+        else:
+            print(output_text)
+        return output_text
