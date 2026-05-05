@@ -26,8 +26,8 @@ Submissions/**/*.safetensors
 
 # Benchmark results (generated output, except tracked submissions)
 Results/*
-!Results/MerryPoppins_Lisa_Huiting_First/
-!Results/MerryPoppins_Lisa_Huiting_First/**
+!Results/MerryPoppins_LH/
+!Results/MerryPoppins_LH/**
 
 # leaderboard cache
 leaderboard/__pycache__/
