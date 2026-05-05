@@ -24,8 +24,10 @@ Submissions/**/*.pth
 Submissions/**/*.ckpt
 Submissions/**/*.safetensors
 
-# Benchmark results (generated output)
-Results/
+# Benchmark results (generated output, except tracked submissions)
+Results/*
+!Results/MerryPoppins_Lisa_Huiting_First/
+!Results/MerryPoppins_Lisa_Huiting_First/**
 
 # leaderboard cache
 leaderboard/__pycache__/

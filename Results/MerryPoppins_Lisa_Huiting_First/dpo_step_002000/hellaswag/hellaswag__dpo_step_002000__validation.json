@@ -1,0 +1,153 @@
+{
+  "benchmark": "hellaswag",
+  "submission": "MerryPoppins_Lisa_Huiting_First",
+  "checkpoint": "C:\\Users\\lisar\\GitHub\\PikoGPT_Leaderboard\\Submissions\\MerryPoppins_Lisa_Huiting_First\\runs\\dpo_step_002000.pt",
+  "data": "leaderboard\\benchmarks\\hellaswag\\cleaned\\validation.jsonl",
+  "limit": 100,
+  "total": 100,
+  "correct": 27,
+  "invalid": 0,
+  "accuracy_pct": 27.0,
+  "wrong_examples": [
+    {
+      "id": "hellaswag_val_activitynet_v_-JhWjGDPHMY_24",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: A man is sitting on a roof. he\nA) is using wrap to wrap a pair of skis.\nB) is ripping level tiles off.\nC) is holding a rubik's cube.\nD) starts pulling up roofing on a roof.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_-lJS58hyo1c_92",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: A lady walks to a barbell. She bends down and grabs the pole. the lady\nA) swings and lands in her arms.\nB) pulls the barbell forward.\nC) pulls a rope attached to the barbell.\nD) stands and lifts the weight over her head.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_-xQvJmC2jhk_106",
+      "gold": "C",
+      "pred": "B",
+      "prompt": "Context: Two women in a child are shown in a canoe while a man pulls the canoe while standing in the water, with other individuals visible in the background. the child and a different man\nA) are then shown paddling down a river in a boat while a woman talks.\nB) are driving the canoe, they go down the river flowing side to side.\nC) sit in a canoe while the man paddles.\nD) walking go down the rapids, while the man in his helicopter almost falls and goes out of canoehood.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_-zHX3Gdx6I4_114",
+      "gold": "C",
+      "pred": "B",
+      "prompt": "Context: A boy is running down a track. the boy\nA) runs into a car.\nB) gets in a mat.\nC) lifts his body above the height of a pole.\nD) stands on his hands and springs.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0RUMAGGab1k_149",
+      "gold": "C",
+      "pred": "B",
+      "prompt": "Context: A man is standing in front of a camera. He starts playing a harmonica for the camera. he\nA) begins to play the harmonica with his body while looking at the camera.\nB) seems to be singing while playing the harmonica.\nC) rocks back and forth to the music as he goes.\nD) painted a fence in front of the camera.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0bosp4-pyTM_185",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: Then he takes a piece of bark and rubs the powered stone pieces onto it. The stone particles stick to the wet piece of wood. he\nA) uses a small brush to polish one of the stone pieces.\nB) then uses a strip of sealing tape to seal the board and then smooths the bottom of the board.\nC) walks towards the camera.\nD) then takes the knife and sharpens it against the wood piece.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0bosp4-pyTM_186",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: The stone particles stick to the wet piece of wood. He then takes the knife and sharpens it against the wood piece. he\nA) then cuts off the excess hair of the wood.\nB) scrapes the wood with a broom in the cutting tool used in sharpening the instrument.\nC) writes on the board again.\nD) then notices a little black and green poisonous frog sitting next to him.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0bosp4-pyTM_187",
+      "gold": "C",
+      "pred": "B",
+      "prompt": "Context: He then takes the knife and sharpens it against the wood piece. He then notices a little black and green poisonous frog sitting next to him. the frog\nA) eventually gets to get up and marches out of the room waving its body about.\nB) then starts to get up from the chair and begins walking towards the camera.\nC) then escapes and jumps away.\nD) is acting crazy and attacking him while he is cooking.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0bosp4-pyTM_188",
+      "gold": "C",
+      "pred": "B",
+      "prompt": "Context: He then notices a little black and green poisonous frog sitting next to him. The frog then escapes and jumps away. he\nA) sits and hugs another man and also adjusts his camera.\nB) then sits there staring at his text machine as if he has actually been given a gift from god.\nC) explains how the frog secretes a poisonous fluid that can be extremely harmful.\nD) takes the frog on his hand and tickles the back of it.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0dgmG3h9RLA_192",
+      "gold": "A",
+      "pred": "B",
+      "prompt": "Context: A person is playing bagpipes out in a park. A man and two boys watching from a far. the camera\nA) shoots areas all around the park while the bagpipes play.\nB) is covered to the boy that is playing there.\nC) then goes black and we see a black opening scene.\nD) watching the boy and boy as they play a game of drums.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_0hWGSkDnRHA_200",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: Two people are seen passing a ball back and fourth in a pool and leads into one speaking to the camera. the man\nA) dips the ball and walks back with the boy and pours detergent into a cup again.\nB) then throws the ball into the pool and begins running around with a sail in his hand while a group of men watch.\nC) then takes a drink having a conversation with another man and another man leads into him throwing balls in the water and laughing to the camera.\nD) demonstrates how to properly throw the ball with his hands while still speaking to the camera.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_15vwVfNA99o_225",
+      "gold": "C",
+      "pred": "B",
+      "prompt": "Context: A woman is sitting at a table in a fast food restaurant while eating. She continually speaks to nobody as she eats. she\nA) is then seen sitting alone as she eats a cold brown ice cream.\nB) pauses in the process of eating to enjoy her food.\nC) stands up and grabs her purse, continuing to talk and laugh as she leaves.\nD) picks up another chocolate bar and chews it as she talks.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_1AZxtWKkRlo_245",
+      "gold": "A",
+      "pred": "B",
+      "prompt": "Context: A group of cheerleaders run onto a stage before a cheering audience. they\nA) get into formation, then begin dancing and flipping as male cheerleaders join them.\nB) perform a cheer routine before the girls, along with makeup artists, spread out and pose.\nC) take turns jumping on each other like they are performing karate.\nD) are then shown performing the type of cheerleading dance, using batons and pole vaults.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_2eep4G5Tgho_354",
+      "gold": "A",
+      "pred": "B",
+      "prompt": "Context: A man is outside of a building. He is using commercial lawn mowing equipment. he\nA) walks back and forth as he mows the grass.\nB) is animated as he does the task.\nC) relaxes, making sure his lawn is pristine.\nD) runs from one side of the building to the other.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_2rA5pyel_NE_378",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: Children bring desert out for their family member. the family\nA) floats in a river.\nB) member stands looking into a hut and then handing people photographs.\nC) member cuts a piece of sunscreen.\nD) enjoys eating the desert together.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_2rA5pyel_NE_380",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: The family enjoys eating the desert together. The people in the restaurant laugh at the man and he wonders what they are doing. the man\nA) goes to the bathroom and isn't able to get very far.\nB) puts the glass aside and a fourth person walks in and walks away.\nC) plays the bagpipe and smiles and laughs as he enjoys the hospitality.\nD) gets up and walks away to the other room.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_33SI8z8PovA_385",
+      "gold": "A",
+      "pred": "B",
+      "prompt": "Context: A black female is shown in a room with a black scarf around her head. black spots on her faced\nA) are then zoomed in on and she begins to apply something on it.\nB) are shown and she misses a little bit of her swing.\nC) are shown and one finger is seen poking through.\nD) are shown as she continues to dance around on the hardwood and every move makes a lash on her face.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_33SI8z8PovA_386",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: A black female is shown in a room with a black scarf around her head. Black spots on her faced are then zoomed in on and she begins to apply something on it. next\nA) , she begins to brush her lips and make painted lips look just like a lipstick to the camera and ends with her closing gift and instruction showing her off at the end.\nB) she is shown in various different locations and gets extremely close to a wall.\nC) , she is shown making multiple moans and sprays some kind of liquid down her face before hanging up.\nD) , she takes some spray and it makes her skin extremely oily and she continues to talk until the video is over.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_3EuY86B4uTo_393",
+      "gold": "A",
+      "pred": "B",
+      "prompt": "Context: A helicopter flies in some people who then start playing paintball. they\nA) run around obstacles and have a great time.\nB) lose their shirt during the fight and run back the others.\nC) shoot at each other while the helicopter drone who am looking on.\nD) chase a bird in the sky while others walk around.\nAnswer:",
+      "raw_generation": "B"
+    },
+    {
+      "id": "hellaswag_val_activitynet_v_3HBAcaU552I_398",
+      "gold": "D",
+      "pred": "B",
+      "prompt": "Context: A young boy and girl are standing over a sink with their mother talking. the mother\nA) is now putting lipstick on the boy's mouth and he tries to stop her but only gets a little bit stuck.\nB) washes the boy while the child grabs shampoo.\nC) shows some shaving cream on the boy who is scrubbing her brushes.\nD) instructs them on how to brush their teeth while laughing.\nAnswer:",
+      "raw_generation": "B"
+    }
+  ]
+}
