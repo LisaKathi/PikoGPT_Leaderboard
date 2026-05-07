@@ -63,9 +63,12 @@ class CausalSelfAttention(nn.Module):
         super().__init__()
         assert config.n_embd % config.n_heads == 0
         self.n_heads = config.n_heads
+        self.n_kv_heads = config.n_kv_heads if config.n_kv_heads is not None else config.n_heads
+        assert self.n_heads % self.n_kv_heads == 0, "n_heads must be divisible by n_kv_heads"
         self.n_embd = config.n_embd
         self.dropout = config.dropout
         self.head_dim = config.n_embd // config.n_heads
+        self.kv_dim = self.n_kv_heads * self.head_dim
         self.qk_norm = config.qk_norm
         self.rotary = None
         self.rotary_dim = 0
@@ -77,17 +80,18 @@ class CausalSelfAttention(nn.Module):
                 self.rotary_dim = rotary_dim
                 self.rotary = RotaryEmbedding(self.rotary_dim, base=config.rope_theta)
 
-        # Q, K, V projections combined into one linear layer
-        self.c_attn = nn.Linear(config.n_embd, 3 * config.n_embd, bias=config.bias)
+        # Separate Q, K, V projections (K/V smaller when n_kv_heads < n_heads, for GQA/MQA)
+        self.q_proj = nn.Linear(config.n_embd, config.n_embd, bias=config.bias)
+        self.k_proj = nn.Linear(config.n_embd, self.kv_dim, bias=config.bias)
+        self.v_proj = nn.Linear(config.n_embd, self.kv_dim, bias=config.bias)
         self.c_proj = nn.Linear(config.n_embd, config.n_embd, bias=config.bias)
         self.resid_dropout = nn.Dropout(config.dropout)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         B, T, C = x.size()
-        q, k, v = self.c_attn(x).split(self.n_embd, dim=2)
-        q = q.view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
-        k = k.view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
-        v = v.view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
+        q = self.q_proj(x).view(B, T, self.n_heads, self.head_dim).transpose(1, 2)
+        k = self.k_proj(x).view(B, T, self.n_kv_heads, self.head_dim).transpose(1, 2)
+        v = self.v_proj(x).view(B, T, self.n_kv_heads, self.head_dim).transpose(1, 2)
         if self.rotary is not None:
             q_rot, q_pass = q[..., : self.rotary_dim], q[..., self.rotary_dim :]
             k_rot, k_pass = k[..., : self.rotary_dim], k[..., self.rotary_dim :]
@@ -99,7 +103,12 @@ class CausalSelfAttention(nn.Module):
             q = F.normalize(q, dim=-1, eps=1e-6) * scale
             k = F.normalize(k, dim=-1, eps=1e-6) * scale
 
-        # Flash attention with causal mask (PyTorch >= 2.0)
+        # GQA: repeat K/V heads to match Q heads
+        if self.n_kv_heads != self.n_heads:
+            n_rep = self.n_heads // self.n_kv_heads
+            k = k.repeat_interleave(n_rep, dim=1)
+            v = v.repeat_interleave(n_rep, dim=1)
+
         y = F.scaled_dot_product_attention(
             q, k, v,
             dropout_p=self.dropout if self.training else 0.0,

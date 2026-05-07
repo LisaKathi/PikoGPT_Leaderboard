@@ -62,6 +62,7 @@ class ModelConfig(BaseModel):
     vocab_size: int = 50304       # GPT-2 vocab (50257) rounded up to nearest multiple of 64
     n_layers: int = 6
     n_heads: int = 6
+    n_kv_heads: Optional[int] = None  # None = standard MHA (n_kv_heads == n_heads); set < n_heads for GQA
     n_embd: int = 384
     context_len: int = 1024
     dropout: float = 0.0

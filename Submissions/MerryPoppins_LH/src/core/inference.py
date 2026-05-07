@@ -11,6 +11,41 @@ from src.model.gpt import GPT
 from src.utils.device import get_device
 
 
+_ALPACA_WRAPPER = (
+    "Below is an instruction that describes a task. "
+    "Write a response that appropriately completes the request.\n\n"
+    "### Instruction:\n{instruction}\n\n{body}\n\n### Response:\n"
+)
+
+
+def _wrap_leaderboard_prompt(prompt: str) -> str:
+    """
+    Wrap a raw leaderboard MC prompt in the Alpaca preamble used during SFT,
+    so the model recognises it as a multiple-choice task.
+    Non-MC prompts (LAMBADA continuations) pass through unchanged.
+    """
+    if not prompt.rstrip().endswith("Answer:"):
+        return prompt
+
+    body_full = prompt.rstrip()
+    body_full = body_full[: -len("Answer:")].rstrip()
+
+    if body_full.startswith("Question:"):
+        # OpenBookQA / ARC-style
+        instruction = (
+            "Answer the following multiple-choice question with the letter of the correct answer."
+        )
+        body = body_full[len("Question:") :].strip()
+    elif body_full.startswith("Context:"):
+        # HellaSwag / WinoGrande-style
+        instruction = "Choose the most logical continuation."
+        body = body_full[len("Context:") :].strip()
+    else:
+        return prompt
+
+    return _ALPACA_WRAPPER.format(instruction=instruction, body=body)
+
+
 class InferenceRunner:
     def __init__(self, config: InferenceConfig) -> None:
         self.config = config
@@ -32,7 +67,8 @@ class InferenceRunner:
             warnings.simplefilter("ignore", FutureWarning)
             tokenizer = GPT2TokenizerFast.from_pretrained("gpt2", local_files_only=True)
 
-        input_ids = torch.tensor([tokenizer.encode(cfg.prompt)], dtype=torch.long, device=device)
+        prompt_text = _wrap_leaderboard_prompt(cfg.prompt) if cfg.leaderboard else cfg.prompt
+        input_ids = torch.tensor([tokenizer.encode(prompt_text)], dtype=torch.long, device=device)
         eos_token_id = 50256
 
         if cfg.temperature == 0.0:
@@ -51,7 +87,7 @@ class InferenceRunner:
                 temperature=cfg.temperature,
             )
 
-        prompt_len = len(tokenizer.encode(cfg.prompt))
+        prompt_len = len(tokenizer.encode(prompt_text))
         generated_ids = input_ids[0][prompt_len:].tolist()
         output_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
 
