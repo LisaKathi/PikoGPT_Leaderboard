@@ -41,9 +41,9 @@
       "benchmark": "lambada",
       "data": "leaderboard\\benchmarks\\lambada\\cleaned\\test.jsonl",
       "total": 100,
-      "correct": 1,
+      "correct": 26,
       "invalid": 0,
-      "accuracy_pct": 1.0
+      "accuracy_pct": 26.0
     }
   ]
 }
