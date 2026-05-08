@@ -68,15 +68,29 @@ class InferenceRunner:
             tokenizer = GPT2TokenizerFast.from_pretrained("gpt2", local_files_only=True)
 
         prompt_text = _wrap_leaderboard_prompt(cfg.prompt) if cfg.leaderboard else cfg.prompt
+        is_lambada = cfg.leaderboard and not cfg.prompt.rstrip().endswith("Answer:")
+        # Strip trailing whitespace for LAMBADA so the model emits " word" tokens
+        # (with leading space) instead of subword fragments like "vernal".
+        if is_lambada:
+            prompt_text = prompt_text.rstrip()
         input_ids = torch.tensor([tokenizer.encode(prompt_text)], dtype=torch.long, device=device)
         eos_token_id = 50256
+        # GPT-2 BPE: 198='\n', 628='\n\n', 220=' ', 50256=EOS.
+        # Block newlines + EOS for the first generated token; allow space and other
+        # leading characters so word continuations like " signs" can still emerge.
+        LAMBADA_BLOCK_FIRST = (198, 628, 50256)
 
         if cfg.temperature == 0.0:
             with torch.no_grad():
-                for _ in range(cfg.max_tokens):
+                for step in range(cfg.max_tokens):
                     idx_cond = input_ids[:, -model_cfg.context_len:]
                     logits, _ = model(idx_cond)
-                    next_token = logits[:, -1, :].argmax(dim=-1, keepdim=True)
+                    last_logits = logits[:, -1, :]
+                    if is_lambada and step == 0:
+                        last_logits = last_logits.clone()
+                        for tid in LAMBADA_BLOCK_FIRST:
+                            last_logits[:, tid] = float("-inf")
+                    next_token = last_logits.argmax(dim=-1, keepdim=True)
                     input_ids = torch.cat((input_ids, next_token), dim=1)
                     if next_token.item() == eos_token_id:
                         break
@@ -90,6 +104,11 @@ class InferenceRunner:
         prompt_len = len(tokenizer.encode(prompt_text))
         generated_ids = input_ids[0][prompt_len:].tolist()
         output_text = tokenizer.decode(generated_ids, skip_special_tokens=True)
+
+        # Defensive cleanup for LAMBADA: strip leading newlines / quotes so the
+        # leaderboard's first-word extractor lands on a real candidate.
+        if is_lambada:
+            output_text = output_text.lstrip(" \n\r\t\"'“”‘’")
 
         if cfg.leaderboard:
             enc = sys.stdout.encoding or "utf-8"
