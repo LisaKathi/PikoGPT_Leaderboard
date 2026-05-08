@@ -1,0 +1,153 @@
+{
+  "benchmark": "lambada",
+  "submission": "MerryPoppins_LH",
+  "checkpoint": "C:\\Users\\lisar\\GitHub\\PikoGPT_Leaderboard\\Submissions\\MerryPoppins_LH\\runs\\dpo_step_000500.pt",
+  "data": "leaderboard\\benchmarks\\lambada\\cleaned\\test.jsonl",
+  "limit": 100,
+  "total": 100,
+  "correct": 24,
+  "invalid": 0,
+  "accuracy_pct": 24.0,
+  "wrong_examples": [
+    {
+      "id": "lambada_test_sha1_661767b14de562ef",
+      "gold": "signs",
+      "pred": "him",
+      "prompt": "In my palm is a clear stone, and inside it is a small ivory statuette. A guardian angel.\n\n\"Figured if you're going to be out at night getting hit by cars, you might as well have some backup.\"\n\nI look at him, feeling stunned. Like this is some sort of sign. But as I stare at Harlin, his mouth curved in a confident grin, I don't care about ",
+      "raw_generation": "him. He's a"
+    },
+    {
+      "id": "lambada_test_sha1_b750316312de1536",
+      "gold": "Shane",
+      "pred": "i'm",
+      "prompt": "Give me a minute to change and I'll meet you at the docks.\" She'd forced those words through her teeth.\n\n\"No need to change. We won't be that long.\"\n\nShane gripped her arm and started leading her to the dock.\n\n\"I can make it there on my own, ",
+      "raw_generation": "I'm sure.\"\n"
+    },
+    {
+      "id": "lambada_test_sha1_777ea1edbb744305",
+      "gold": "Hastin",
+      "pred": "and",
+      "prompt": "She knew that Basha was a decent young man, that he was pretty sweet and friendly with her. Jawen knew they had a bit of a history, but she thought that this time she would get along better with him, that she could overlook those problems.\nThey kissed, and she knew that she liked Basha, but then Hastin interfered. She was so angry that she immediately said, once they were out of earshot of Basha, “You don’t mean anything to me anymore, ",
+      "raw_generation": "and she was"
+    },
+    {
+      "id": "lambada_test_sha1_cf6bb47f6c22f231",
+      "gold": "Aidan",
+      "pred": "",
+      "prompt": "There was no way he would come here on his own.\nHe ordered a cup of coffee, and then we just sat in silence.\n“So,” Aidan finally said, “How’s it going?”\nI laughed. “Not much has changed since the last time I saw you.”\n“Ya know, you eat here a lot,” said ",
+      "raw_generation": ".”\n?"
+    },
+    {
+      "id": "lambada_test_sha1_0765ddf78ca66b8c",
+      "gold": "Gabriel",
+      "pred": "flannery",
+      "prompt": "“Why?”\n“I would have thought you’d find him rather dry,” she said.\n“I don’t know about that,” said Gabriel.\n“He was a great craftsman,” said Heather.\n“That he was,” said Flannery.\n“And Polish, to boot,” said ",
+      "raw_generation": "Flannery.\n?"
+    },
+    {
+      "id": "lambada_test_sha1_780040596f14298d",
+      "gold": "coffee",
+      "pred": "light",
+      "prompt": "Both its sun-speckled shade and the cool grass beneath were a welcome respite after the stifling kitchen, and I was glad to relax against the tree’s rough, brittle bark and begin my breakfast of buttery, toasted bread and fresh fruit. Even the water was tasty, it was so clean and cold. It almost made up for the lack of ",
+      "raw_generation": "light and shade in the"
+    },
+    {
+      "id": "lambada_test_sha1_8117d3ca994b411d",
+      "gold": "fights",
+      "pred": "fight",
+      "prompt": "Escorting drunk humans out of the bar is different from going up against a tiger-wildcat who eats raw steak for breakfast and is dying for a fight.\"\n\n\"I bet he could win with just his breath,\" Ronan said. Sean chuckled.\n\n\"Take it seriously, Ronan. These guys are seasoned. If Marquez has a champion, it means he's won a good share of the ",
+      "raw_generation": "fight. He's a"
+    },
+    {
+      "id": "lambada_test_sha1_dae3a616cc518a30",
+      "gold": "story",
+      "pred": "opinion",
+      "prompt": "Instead, I stare straight ahead like I'm deeply interested in what's going on at the front of the room.\n\nEventually, we make it through to the part where everyone stands up and says their little piece. Some have a longer, more in depth story to tell, which terrifies me. I don't want anyone to ask me for my ",
+      "raw_generation": "opinion, but I'm"
+    },
+    {
+      "id": "lambada_test_sha1_3d5da9a83c6118c5",
+      "gold": "border",
+      "pred": "federation",
+      "prompt": "Recall our encounter with the warbirds at the Federation border. Confirm my memory with yours.”\nShe turned Seren to face her. They placed their foreheads together as when they meditated together. They held hands beneath the surface of the water. They closed their eyes.\n“There were five warbirds at the ",
+      "raw_generation": "Federation border. They were"
+    },
+    {
+      "id": "lambada_test_sha1_43c284e808af7ef0",
+      "gold": "introductions",
+      "pred": "me",
+      "prompt": "I was so happy to see him that I almost sobbed his name.\nEli stiffened and let out a hiss. “Mohiri!” Fear crept into his voice, and my dazed mind wondered what on earth scared a vampire.\nNikolas chuckled, and I felt a tremor run through my captor. “I see there is no need for ",
+      "raw_generation": "me to be afraid."
+    },
+    {
+      "id": "lambada_test_sha1_80c43c70685398c7",
+      "gold": "babies",
+      "pred": "her",
+      "prompt": "\"Come on, baby girl,\" Mary Jo said, scooping up the toy, then bending to retrieve her daughter. \"Let me change your diaper and put you down for a couple of hours.\"\n\n\"She sleeps that long?\"\n\n\"Almost every afternoon. She still takes a morning nap, too, but she'll outgrow those pretty soon.\"\n\nLori knew she had a lot to learn about ",
+      "raw_generation": "her daughter. She had"
+    },
+    {
+      "id": "lambada_test_sha1_da02471be28d4706",
+      "gold": "together",
+      "pred": "",
+      "prompt": "I would really like to have some time with my mom.\"\n\nLucien groaned inwardly. How could he say no to that? Julia was grieving for her mate and at a loss on how to deal with her daughter. Now Jaeden actually wanted to speak to her mom... he would be an ogre if he said no. He gave a quick nod and ignored the grateful smile she threw him before her and her mother ambled out of the room ",
+      "raw_generation": ".\n\"I'm"
+    },
+    {
+      "id": "lambada_test_sha1_ddc09e10b2a9653b",
+      "gold": "Chester",
+      "pred": "floyd’s",
+      "prompt": "I leaned out the window and pointed at Floyd’s hearing aid.\nFloyd dug the hearing aid out of his ear and made an adjustment. “Sorry,” he said, screwing it back in. “Blasted thing was turned off.”\n“What happened to Chester?”\n“Shot in the head’s what happened to ",
+      "raw_generation": "Floyd’s hearing"
+    },
+    {
+      "id": "lambada_test_sha1_038c67bf3f968933",
+      "gold": "book",
+      "pred": "as",
+      "prompt": "‘Well I don’t know why, Nellie showed it to me many times. It has heaps of her poems and short stories in it; mostly girlie stuff though, which is why she obviously didn’t bother showing you. Strange that she left it to you though, I can’t imagine you would enjoy it very much.\n‘Are you sure it is the same ",
+      "raw_generation": "as the other books?"
+    },
+    {
+      "id": "lambada_test_sha1_fe3b42c46ba6c57b",
+      "gold": "Izzy",
+      "pred": "the",
+      "prompt": "\"We'll wait for you, Daddy,\" Izzy said, snuggling up to Annie.\n\nNick pressed the book into Izzy's hands and hurried out of the room. He came back a few minutes later, looking solemn.\n\nAnnie felt a prickling of fear. She sat up straighter, leaning forward. \"Nick?\"\n\nHe eased back into the bed, on the other side of ",
+      "raw_generation": "the room.\n\n"
+    },
+    {
+      "id": "lambada_test_sha1_dd99f34bf065525b",
+      "gold": "Sarah",
+      "pred": "the",
+      "prompt": "A cowboy behind her said to break up a cheese slice and mush it down in the mixture. Sarah took a slice of cheese to do just that.\nSarah and Tess sat at one of the large tables with other guests. Everyone talked and laughed, while eating lunch. It seemed a happy group. Dale watched from the back to make sure all was well and to get another look at ",
+      "raw_generation": "the new adventure."
+    },
+    {
+      "id": "lambada_test_sha1_723c066731fdfaca",
+      "gold": "emergencies",
+      "pred": "baggage",
+      "prompt": "Brayden's face was a mix of incredulity and disappointment when I told him I had to leave.\n\n\"But you just... I mean...\" It was a rare moment of speechlessness for him.\n\n\"I'm sorry,\" I said earnestly. \"Especially after being late and ruining the museum. But it's a family emergency.\"\n\n\"Your family has an awful lot of ",
+      "raw_generation": "baggage,\" he said."
+    },
+    {
+      "id": "lambada_test_sha1_ca7a8ebae60cb0ad",
+      "gold": "Bob",
+      "pred": "the",
+      "prompt": "Olaf slapped the boy real hard. Bob was momentarily stunned. Olaf then started yelling at him about calling him without permission unless it was emergency. The boy mumbled something crying at the same time. Bob got closer through the woods and stepped on a branch that cracked. Both Olaf and the boy heard it and walked towards ",
+      "raw_generation": "the tree. The boy"
+    },
+    {
+      "id": "lambada_test_sha1_85c27e8d6d4cbd78",
+      "gold": "piano",
+      "pred": "table",
+      "prompt": "His smile widened. “I’ll keep it a secret.”\n“Thank you.”\n“Can you play?”\n“Grace taught me how to play Chopsticks.”\n“It’s a good place to start.” He tapped his card on the table. “I’ll think I’ll take another look at the ",
+      "raw_generation": "table.”\n"
+    },
+    {
+      "id": "lambada_test_sha1_5e4b5c859c973d8f",
+      "gold": "stove",
+      "pred": "fire",
+      "prompt": "Now, they were opening cans of pork & beans and eating them cold. As to why they didn't heat them up first, it took some prying but Lucas finally admitted that there had been a bit of an accident when they had used the stove and it had caught on fire. The ship was fine but they weren't sure about the ",
+      "raw_generation": "fire. They were still"
+    }
+  ]
+}
